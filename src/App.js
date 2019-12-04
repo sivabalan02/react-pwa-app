@@ -6,21 +6,38 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         Welcome to the react world. Used for testing pwa.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
+}
+
+console.log(navigator.serviceWorker.addEventListener)
+navigator.serviceWorker.addEventListener('message', function(event) {
+        console.log("Got reply from service worker: " + event.data);
+    });
+
+if (window.BroadcastChannel) {
+    console.log("testing111");
+
+    let channel = new BroadcastChannel("sw-messages");
+    if (window.BroadcastChannel) {
+        console.log("sending111");
+        channel.postMessage({type: 1, message: "New content available. Click to update"});
+    }    
+
+    channel.addEventListener('message', function (data) {
+        console.log("tessst");
+        if (data.type === 1) {
+            alert(data.message);
+        }
+    });
+
+    channel.addEventListener('messageerror', function (error) {
+        console.error(error);
+    });
 }
 
 export default App;
