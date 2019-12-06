@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-         Welcome to the react world. Used for testing pwa.
+         Welcome to the react world. Used for testing pwa. Testing the files
         </p>
       </header>
     </div>
